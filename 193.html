@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-193: Errors</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5296e2aa">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5296e2aa">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5296e2aa"></script>
+    
+<script type="text/javascript" src="/assets/js/syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://github.com/aip-dev/google.aip.dev" target="_blank" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/aip-dev/google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">Workspace</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3">
+        <span class="aip-number">3</span>
+        AIP Versioning
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style and Guidance
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/111">
+        <span class="aip-number">111</span>
+        Planes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/128">
+        <span class="aip-number">128</span>
+        Declarative-friendly interfaces
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/129">
+        <span class="aip-number">129</span>
+        Server-Modified Values and Defaults
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/130">
+        <span class="aip-number">130</span>
+        Methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/147">
+        <span class="aip-number">147</span>
+        Sensitive fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/148">
+        <span class="aip-number">148</span>
+        Standard fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/149">
+        <span class="aip-number">149</span>
+        Unset field values
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/161">
+        <span class="aip-number">161</span>
+        Field masks
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/164">
+        <span class="aip-number">164</span>
+        Soft delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/182">
+        <span class="aip-number">182</span>
+        External software dependencies
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/185">
+        <span class="aip-number">185</span>
+        API Versioning
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/202">
+        <span class="aip-number">202</span>
+        Fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/211">
+        <span class="aip-number">211</span>
+        Authorization checks
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        API-specific protos
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/236">
+        <span class="aip-number">236</span>
+        Policy preview
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Errors</th></tr>
+    <tr><td>Number</td><td>193</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/193">google.aip.dev/193</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2019-07-26</td></tr>
+    <tr><td>Updated</td><td>2019-07-26</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#statusmessage">Status.message</a></li>
+<li><a href="#statuscode">Status.code</a></li>
+<li><a href="#statusdetails">Status.details</a></li>
+<li><a href="#error-messages">Error messages</a></li>
+<li><a href="#partial-errors">Partial errors</a></li>
+<li><a href="#permission-denied">Permission Denied</a></li>
+</ul>
+</li>
+<li><a href="#http11json-representation">HTTP/1.1+JSON representation</a></li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#requiring-errorinfo">Requiring ErrorInfo</a></li>
+<li><a href="#including-localizedmessage">Including LocalizedMessage</a></li>
+<li><a href="#updating-statusmessage">Updating Status.message</a></li>
+</ul>
+</li>
+<li><a href="#further-reading">Further reading</a></li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0193.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0193.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Errors
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-193</h4>
+  <h1 id="errors">Errors</h1>
+<p>Effective error communication is an important part of designing simple
+and intuitive APIs. Services returning standardized error responses
+enable API clients to construct centralized common error handling logic.
+This common logic simplifies API client applications and eliminates the
+need for cumbersome custom error handling code.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Services <strong>must</strong> return a <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto"><code>google.rpc.Status</code></a> message when an
+API error occurs, and <strong>must</strong> use the canonical error codes defined in
+<a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto"><code>google.rpc.Code</code></a>.  More information about the particular codes
+is available in the <a href="https://github.com/grpc/grpc/blob/master/doc/statuscodes.md">gRPC status code documentation</a>.</p>
+<p>Error messages <strong>should</strong> help a reasonably technical user <em>understand</em>
+and <em>resolve</em> the issue, and <strong>should not</strong> assume that the user is an
+expert in your particular API. Additionally, error messages <strong>must not</strong>
+assume that the user will know anything about its underlying
+implementation.</p>
+<p>Error messages <strong>should</strong> be brief but actionable. Any extra information
+<strong>should</strong> be provided in the <code>details</code> field. If even more information
+is necessary, you <strong>should</strong> provide a link where a reader can get more
+information or ask questions to help resolve the issue. It is also
+important to <a href="https://developers.google.com/tech-writing/error-messages/set-tone">set the right tone</a> when writing messages.</p>
+<p>The following sections describe the fields of <code>google.rpc.Status</code>.</p>
+<h3 id="statusmessage">Status.message</h3>
+<p>The <code>message</code> field is a developer-facing, human-readable "debug message"
+which <strong>should</strong> be in English. (Localized messages are expressed using
+a <code>LocalizedMessage</code> within the <code>details</code> field. See
+<a href="#localizedmessage"><code>LocalizedMessage</code></a> for more details.) Any dynamic aspects of
+the message <strong>must</strong> be included as metadata within the <code>ErrorInfo</code> that appears
+in <a href="#status-details"><code>details</code></a>.</p>
+<p>The message is considered a problem description. It is intended for
+developers to understand the problem and is more detailed than
+<a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto#L57"><code>ErrorInfo.reason</code></a>, discussed <a href="#errorinfo">later</a>.</p>
+<p>Messages <strong>should</strong> use simple descriptive language that is easy to understand
+(without technical jargon) to clearly state the problem that results in an
+error, and offer an actionable resolution to it.</p>
+<p>For pre-existing (brownfield) APIs which have previously returned errors
+without machine-readable identifiers, the value of <code>message</code> <strong>must</strong>
+remain the same for any given error. For more information, see
+<a href="#changing-error-messages">Changing Error Messages</a>.</p>
+<h3 id="statuscode">Status.code</h3>
+<p>The <code>code</code> field is the status code, which <strong>must</strong> be the numeric value of
+one of the elements of the <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto"><code>google.rpc.Code</code></a> enum.</p>
+<p>For example, the value <code>5</code> is the numeric value of the <code>NOT_FOUND</code>
+enum element.</p>
+<h3 id="statusdetails">Status.details</h3>
+<p>The <code>details</code> field allows messages with additional error information to
+be included in the error response, each packed in a <code>google.protobuf.Any</code>
+message.</p>
+<p>Google defines a set of <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/error_details.proto">standard detail payloads</a> for error
+details, which cover most common needs for API errors. 
+Services <strong>should</strong> use these standard detail payloads when feasible.</p>
+<p>Each type of detail payload <strong>must</strong> be included at most once. For
+example, there <strong>must not</strong> be more than one <a href="https://github.com/googleapis/googleapis/blob/477a59d764428136ba1d857a9633c0d231de6efa/google/rpc/error_details.proto#L168-L218"><code>BadRequest</code></a>
+message in the <code>details</code>, but there <strong>may</strong> be a <code>BadRequest</code> and a
+<a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L139-L166"><code>PreconditionFailure</code></a>.</p>
+<p>All error responses <strong>must</strong> include an <code>ErrorInfo</code> within <code>details</code>. This
+provides machine-readable identifiers so that users can write code against
+specific aspects of the error.</p>
+<p>The following sections describe the most common standard detail payloads.</p>
+<h4 id="errorinfo">ErrorInfo</h4>
+<p>The <a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L27-L76"><code>ErrorInfo</code></a> message is the primary way to send a
+machine-readable identifier. Contextual information <strong>should</strong> be
+included in <code>metadata</code> in <code>ErrorInfo</code> and <strong>must</strong> be included if it
+appears within an error message.</p>
+<p>The <code>reason</code> field is a short snake_case description of the cause of the
+error. Error reasons are unique within a particular domain of errors.
+The reason <strong>must</strong> be at most 63 characters and match a regular expression of
+<code>[A-Z][A-Z0-9_]+[A-Z0-9]</code>. (This is UPPER_SNAKE_CASE, without leading
+or trailing underscores, and without leading digits.)</p>
+<p>The reason <strong>should</strong> be terse, but meaningful enough for a human reader to
+understand what the reason refers to.</p>
+<p>Good examples:</p>
+<ul>
+<li><code>CPU_AVAILABILITY</code></li>
+<li><code>NO_STOCK</code></li>
+<li><code>CHECKED_OUT</code></li>
+<li><code>AVAILABILITY_ERROR</code></li>
+</ul>
+<p>Bad examples:</p>
+<ul>
+<li><code>THE_BOOK_YOU_WANT_IS_NOT_AVAILABLE</code> (overly verbose)</li>
+<li><code>ERROR</code> (too general)</li>
+</ul>
+<p>The <code>domain</code> field is the logical grouping to which the <code>reason</code> belongs.
+The domain <strong>must</strong> be a globally unique value, and is typically the name of the service
+that generated the error, e.g. <code>pubsub.googleapis.com</code>.</p>
+<p>The (reason, domain) pair form a machine-readable way of identifying a particular error.
+Services <strong>must</strong> use the same (reason, domain) pair for the same error, and
+<strong>must not</strong> use the same (reason, domain) pair for logically different errors.
+The decision about whether two errors are "the same" or not is not always clear, but
+<strong>should</strong> generally be considered in terms of the expected action a client might take
+to resolve them.</p>
+<p>The <code>metadata</code> field is a map of key/value pairs providing additional
+dynamic information as context. Each key within <code>metadata</code> <strong>must</strong> be at most
+64 characters long, and conform to the regular expression <code>[a-z][a-zA-Z0-9-_]+</code>.</p>
+<p>Any request-specific information which contributes to the <code>Status.message</code> or
+<code>LocalizedMessage.message</code> messages <strong>must</strong> be represented within <code>metadata</code>.
+This practice is critical so that machine actors do not need to parse error
+messages to extract information.</p>
+<p>For example consider the following message:</p>
+<blockquote>
+<p>An &lt;e2-medium&gt; VM instance with &lt;local-ssd=3,nvidia-t4=2&gt; is currently unavailable
+in the &lt;us-east1-a&gt; zone. Consider trying your request in the &lt;us-central1-f,us-central1-c&gt;
+zone(s), which currently has/have capacity to accommodate your request. Alternatively,
+you can try your request again with a different VM hardware configuration
+or at a later time. For more information, see the troubleshooting documentation.</p>
+</blockquote>
+<p>The <code>ErrorInfo.metadata</code> map for the same error could be:</p>
+<ul>
+<li><code>"zone": "us-east1-a"</code></li>
+<li><code>"vmType": "e2-medium"</code></li>
+<li><code>"attachment": "local-ssd=3,nvidia-t4=2"</code></li>
+<li><code>"zonesWithCapacity": "us-central1-f,us-central1-c"</code></li>
+</ul>
+<p>Additional contextual information that does not appear in an error message
+<strong>may</strong> also be included in <code>metadata</code> to allow programmatic use by the client.</p>
+<p>The metadata included for any given (reason,domain) pair can evolve over time:</p>
+<ul>
+<li>New keys <strong>may</strong> be included</li>
+<li>All keys that have been included <strong>must</strong> continue to be included (but may have empty values)</li>
+</ul>
+<p>In other words, once a user has observed a given key for a (reason, domain) pair, the
+service <strong>must</strong> allow them to rely on it continuing to be present in the future.</p>
+<p>The set of keys provided in each (reason, domain) pair is independent from other pairs,
+but services <strong>should</strong> aim for consistent key naming. For example, two error reasons
+within the same domain should not use metadata keys of <code>vmType</code> and <code>virtualMachineType</code>.</p>
+<h4 id="localizedmessage">LocalizedMessage</h4>
+<p><a href="https://github.com/googleapis/googleapis/blob/e9897ed945336e2dc967b439ac7b4be6d2c62640/google/rpc/error_details.proto#L275-L285"><code>google.rpc.LocalizedMessage</code></a> is used to provide an error
+message which <strong>should</strong> be localized to a user-specified locale where
+possible.</p>
+<p>If the <a href="#status-message"><code>Status.message</code></a> field has a sub-optimal value
+which cannot be changed due to the constraints in the
+<a href="#changing-error-messages">Changing Error Messages</a> section, <code>LocalizedMessage</code>
+<strong>may</strong> be used to provide a better error message even when no user-specified
+locale is available.</p>
+<p>Regardless of how the locale for the message was determined, both the <code>locale</code>
+and <code>message</code> fields <strong>must</strong> be populated.</p>
+<p>The <code>locale</code> field specifies the locale of the message,
+following <a href="https://www.rfc-editor.org/rfc/bcp/bcp47.txt">IETF bcp47</a> (Tags for
+Identifying Languages). Example values: <code>"en-US"</code>, <code>"fr-CH"</code>, <code>"es-MX"</code>.</p>
+<p>The <code>message</code> field contains the localized text itself. This
+<strong>should</strong> include a brief description of the error and a call to action
+to resolve the error. The message <strong>should</strong> include contextual information
+to make the message as specific as possible. Any contextual information
+in the message <strong>must</strong> be included in <code>ErrorInfo.metadata</code>. See
+<a href="#errorinfo"><code>ErrorInfo</code></a> for more details of how contextual information
+may be included in a message and the corresponding metadata.</p>
+<p>The <code>LocalizedMessage</code> payload <strong>should</strong> contain the complete resolution
+to the error. If more information is needed than can reasonably fit in this
+payload, then additional resolution information <strong>must</strong> be provided in
+a <code>Help</code> payload.  See the <a href="#help">Help</a> section for guidance.</p>
+<h4 id="help">Help</h4>
+<p>When other textual error messages (in <code>Status.message</code> or
+<code>LocalizedMessage.message</code>) don't provide the user sufficient
+context or actionable next steps, or if there are multiple points of
+failure that need to be considered in troubleshooting, a link to
+supplemental troubleshooting documentation <strong>must</strong> be provided in the
+<code>Help</code> payload.</p>
+<p>Provide this information in addition to a clear problem definition and
+actionable resolution, not as an alternative to them. The linked
+documentation <strong>must</strong> clearly relate to the error. If a single page
+contains information about multiple errors, the
+<a href="#errorinfo"><code>ErrorInfo.reason</code></a> value <strong>must</strong> be used to narrow down
+the relevant information.</p>
+<p>The <code>description</code> field is a textual description of the linked information.
+This <strong>must</strong> be suitable to display to a user as text for a hyperlink.
+This <strong>must</strong> be plain text (not HTML, Markdown etc).</p>
+<p>Example <code>description</code> value: <code>"Troubleshooting documentation for STOCKOUT errors"</code></p>
+<p>The <code>url</code> field is the URL to link to. This <strong>must</strong> be an absolute URL,
+including scheme.</p>
+<p>Example <code>url</code> value:
+<code>"https://cloud.google.com/compute/docs/resource-error"</code></p>
+<p>For publicly-documented services, even those with access controls on actual
+usage, the linked content <strong>must</strong> be accessible without authentication.</p>
+<p>For privately-documented services, the linked content <strong>may</strong> require
+authentication.</p>
+<h3 id="error-messages">Error messages</h3>
+<p>Textual error messages can be present in both <code>Status.message</code> and
+<code>LocalizedMessage.message</code> fields. Messages <strong>should</strong> be succinct but
+actionable, with request-specific information (such as a resource name
+or region) providing precise details where appropriate. Any request-specific
+details <strong>must</strong> be present in <a href="#errorinfo"><code>ErrorInfo.metadata</code></a>.</p>
+<h4 id="changing-error-messages">Changing error messages</h4>
+<p>Changing the content of <code>Status.message</code> over time must be done carefully,
+to avoid breaking clients who have previously had to rely on the message
+for all information. See <a href="#updating-statusmessage">the rationale section</a>
+for more details.</p>
+<p>For a given RPC:</p>
+<ul>
+<li>If the RPC has <em>always</em> returned <code>ErrorInfo</code> with machine-readable
+  information, the content of <code>Status.message</code> <strong>may</strong> change over time.
+  (For example, the API producer may provide a clearer explanation,
+  or more request-specific information.)</li>
+<li>Otherwise, the content of <code>Status.message</code> <strong>must</strong> be stable,
+  providing the same text with the same request-specific information.
+  Instead of changing <code>Status.message</code>, the API <strong>should</strong> include a
+  <a href="#localizedmessage"><code>LocalizedMessage</code></a> within <code>Status.details</code>.</li>
+</ul>
+<p>Even if an RPC has always returned <code>ErrorInfo</code>, the API <strong>may</strong> keep
+the existing <code>Status.message</code> stable and add a
+<a href="#localizedmessage"><code>LocalizedMessage</code></a> within <code>Status.details</code>.</p>
+<p>The content of <code>LocalizedMessage.details</code> <strong>may</strong> change over time.</p>
+<h3 id="partial-errors">Partial errors</h3>
+<p>APIs <strong>should not</strong> support partial errors. Partial errors add
+significant complexity for users, because they usually sidestep the use
+of error codes, or move those error codes into the response message,
+where the user <strong>must</strong> write specialized error handling logic to
+address the problem.</p>
+<p>However, occasionally partial errors are necessary, particularly in bulk
+operations where it would be hostile to users to fail an entire large
+request because of a problem with a single entry.</p>
+<p>Methods that require partial errors <strong>should</strong> use <a href="/151">long-running
+operations</a>, and the method <strong>should</strong> put partial failure information
+in the metadata message. The errors themselves <strong>must</strong> still be
+represented with a <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto"><code>google.rpc.Status</code></a> object.</p>
+<h3 id="permission-denied">Permission Denied</h3>
+<p>If the user does not have permission to access the resource or parent,
+regardless of whether or not it exists, the service <strong>must</strong> error with
+<code>PERMISSION_DENIED</code> (HTTP 403). Permission <strong>must</strong> be checked prior to
+checking if the resource or parent exists.</p>
+<p>If the user does have proper permission, but the requested resource or
+parent does not exist, the service <strong>must</strong> error with <code>NOT_FOUND</code> (HTTP
+404).</p>
+<h2 id="http11json-representation">HTTP/1.1+JSON representation</h2>
+<p>When clients use HTTP/1.1 as per <a href="/127">AIP-127</a>, the error information
+is returned in the body of the response, as a JSON object. For backward
+compatibility reasons, this does not map precisely to <code>google.rpc.Status</code>,
+but contains the same core information. The schema is defined in the following proto:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">Error</span> <span class="p">{</span>
+  <span class="kd">message</span> <span class="nc">Status</span> <span class="p">{</span>
+    <span class="c1">// The HTTP status code that corresponds to `google.rpc.Status.code`.</span>
+    <span class="kt">int32</span> <span class="na">code</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// This corresponds to `google.rpc.Status.message`.</span>
+    <span class="kt">string</span> <span class="kd">message</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="c1">// This is the enum version for `google.rpc.Status.code`.</span>
+    <span class="n">google.rpc.Code</span> <span class="na">status</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="c1">// This corresponds to `google.rpc.Status.details`.</span>
+    <span class="k">repeated</span> <span class="n">google.protobuf.Any</span> <span class="na">details</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">Status</span> <span class="na">error</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The most important difference is that the <code>code</code> field in the JSON is an HTTP status code,
+<em>not</em> the direct value of <code>google.rpc.Status.code</code>. For example, a <code>google.rpc.Status</code>
+message with a <code>code</code> value of 5 would be mapped to an object including the following
+code-related fields (as well as the message, details etc):</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>          <span class="err">//</span> <span class="err">The</span> <span class="err">HTTP</span> <span class="err">s</span><span class="kc">tatus</span> <span class="err">code</span> <span class="kc">f</span><span class="err">or</span> <span class="nt">&quot;not found&quot;</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;NOT_FOUND&quot;</span> <span class="err">//</span> <span class="err">The</span> <span class="kc">na</span><span class="err">me</span> <span class="err">i</span><span class="kc">n</span> <span class="err">google.rpc.Code</span> <span class="kc">f</span><span class="err">or</span> <span class="err">value</span> <span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The following JSON shows a fully populated HTTP/1.1+JSON representation of an error response.</p>
+<div class="highlight language-json"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">429</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;The zone &#39;us-east1-a&#39; does not have enough resources available to fulfill the request. Try a different zone, or try again later.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;RESOURCE_EXHAUSTED&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;details&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.ErrorInfo&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;RESOURCE_AVAILABILITY&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;compute.googleapis.com&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;zone&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east1-a&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;vmType&quot;</span><span class="p">:</span> <span class="s2">&quot;e2-medium&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;attachment&quot;</span><span class="p">:</span> <span class="s2">&quot;local-ssd=3,nvidia-t4=2&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;zonesWithCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;us-central1-f,us-central1-c&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.LocalizedMessage&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;An &lt;e2-medium&gt; VM instance with &lt;local-ssd=3,nvidia-t4=2&gt; is currently unavailable in the &lt;us-east1-a&gt; zone. Consider trying your request in the &lt;us-central1-f,us-central1-c&gt; zone(s), which currently has/have capacity to accommodate your request. Alternatively, you can try your request again with a different VM hardware configuration or at a later time. For more information, see the troubleshooting documentation.&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;@type&quot;</span><span class="p">:</span> <span class="s2">&quot;type.googleapis.com/google.rpc.Help&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Additional information on this error&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cloud.google.com/compute/docs/resource-error&quot;</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="rationale">Rationale</h2>
+<h3 id="requiring-errorinfo">Requiring ErrorInfo</h3>
+<p><code>ErrorInfo</code> is required because it further identifies an error. With
+only approximately twenty <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto">available values</a> for <code>Status.status</code>,
+it is difficult to disambiguate one error from another across an entire
+<a href="https://cloud.google.com/apis/design/glossary#api_service">API Service</a>.</p>
+<p>Also, error messages often contain dynamic segments that express
+variable information, so there needs to be machine-readable component of
+<em>every</em> error response that enables clients to use such information
+programmatically.</p>
+<h3 id="including-localizedmessage">Including LocalizedMessage</h3>
+<p><code>LocalizedMessage</code> was selected as the location to present alternate
+error messages. While <code>LocalizedMessage</code> <strong>may</strong> use a locale specified
+in the request, a service <strong>may</strong> provide a <code>LocalizedMessage</code> even without
+a user-specified locale, typically to provide a better error message in
+<a href="#updating-statusmessage">situations where <code>Status.message</code> cannot be changed</a>.
+Where the locale is not specified by the user, it <strong>should</strong> be <code>en-US</code>
+(US English).</p>
+<p>A service <strong>may</strong> include <code>LocalizedMessage</code> even when the same message is
+provided in <code>Status.message</code> and when localization into a user-specified locale
+is not supported. Reasons for this include:</p>
+<ul>
+<li>An intention to support user-specified localization in the near future, allowing
+  clients to consistently use <code>LocalizedMessage</code> and not change their error-reporting
+  code when the functionality is introduced.</li>
+<li>Consistency across all RPCs within a service: if some RPCs include
+  <code>LocalizedMessage</code> and some only use <code>Status.message</code> for error messages, clients
+  have to be aware of which RPCs will do what, or implement a fall-back mechanism.
+  Providing <code>LocalizedMessage</code> on all RPCs allows simple and consistent client code
+  to be written.</li>
+</ul>
+<h3 id="updating-statusmessage">Updating Status.message</h3>
+<p>If a client has ever observed an error with <code>Status.message</code> populated
+(which it always will be) but without <code>ErrorInfo</code>, the developer of that client
+may well have had to resort to parsing <code>Status.message</code> in order to find out
+information beyond just what <code>Status.code</code> conveys. That information may be
+found by matching specific text (e.g. "Connection closed with unknown cause")
+or by parsing the message to find out metadata values (e.g. a region with
+insufficient resources). At that point, <code>Status.message</code> is implicitly part
+of the API contract, so <strong>must not</strong> be updated - that would be a breaking
+change. This is one reason for introducing <code>LocalizedMessage</code> into the
+<code>Status.details</code>.</p>
+<p>RPCs which have <strong>always</strong> included <code>ErrorInfo</code> are in a better position:
+the contract is then more about the stability of <code>ErrorInfo</code> for any given
+error. The reason and domain need to be consistent over time, and the
+metadata provided for any given (reason,domain) can only be expanded.
+It's still possible that clients could be parsing <code>Status.message</code> instead of
+using <code>ErrorInfo</code>, but they will always have had a more robust option
+available to them.</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>For which error codes to retry, see <a href="/194">AIP-194</a>.</li>
+<li>For how to retry errors in client libraries, see
+  <a href="https://google.aip.dev/client-libraries/4221">AIP-4221</a>.</li>
+</ul>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2024-10-18</strong>: Rewrite/restructure for clarity.</li>
+<li><strong>2024-01-10</strong>: Incorporate guidance for writing effective messages.</li>
+<li><strong>2023-05-17</strong>: Change the recommended language for <code>Status.message</code> to be
+  the service's native language rather than English.</li>
+<li><strong>2023-05-17</strong>: Specify requirements for changing error messages.</li>
+<li><strong>2023-05-10</strong>: Require <a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L27-L76"><code>ErrorInfo</code></a> for all error responses.</li>
+<li><strong>2023-05-04</strong>: Require uniqueness by message type for error details.</li>
+<li><strong>2022-11-04</strong>: Added guidance around PERMISSION_DENIED errors previously
+  found in other AIPs.</li>
+<li><strong>2022-08-12</strong>: Reworded/Simplified intro to add clarity to the intent.</li>
+<li><strong>2020-01-22</strong>: Added a reference to the <a href="https://github.com/googleapis/googleapis/blob/6f3fcc058ff29989f6d3a71557a44b5e81b897bd/google/rpc/error_details.proto#L27-L76"><code>ErrorInfo</code></a> message.</li>
+<li><strong>2019-10-14</strong>: Added guidance restricting error message mutability to if
+  there is a machine-readable identifier present.</li>
+<li><strong>2019-09-23</strong>: Added guidance about error message strings being able to
+    change.</li>
+</ul>
+<!-- prettier-ignore-start -->
+
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

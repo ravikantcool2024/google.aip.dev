@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AIP-217: Unreachable resources</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=5296e2aa">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=5296e2aa">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=5296e2aa"></script>
+    
+<script type="text/javascript" src="/assets/js/syntax.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140054909-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140054909-1');
+    </script>
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AIPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/news" aria-level="1">News</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/faq" aria-level="1">FAQ</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="https://linter.aip.dev/" target="_blank" aria-level="1">
+                    API Linter
+                    <svg role="img" class="glue-icon glue-icon--18px">
+                      <use xlink:href="/assets/images/glue-icons.svg#open-in-new"></use>
+                    </svg>
+                  </a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AIPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://github.com/aip-dev/google.aip.dev" target="_blank" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AIPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/aip-dev/google.aip.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aip-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AIPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item">
+      <a href="/cloud">Google Cloud Platform</a>
+    </li>
+    <li class="nav-item">
+      <a href="/auth">Auth</a>
+    </li>
+    <li class="nav-item">
+      <a href="/client-libraries">Client libraries</a>
+    </li>
+    <li class="nav-item">
+      <a href="/apps">Workspace</a>
+    </li>
+    <li class="nav-item">
+      <a href="/aog">Actions on Google</a>
+    </li>
+    <li class="nav-item nav-item-header">AIPs</li>
+    <li class="nav-item">
+      <a href="/1">
+        <span class="aip-number">1</span>
+        AIP Purpose and Guidelines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/2">
+        <span class="aip-number">2</span>
+        AIP Numbering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/3">
+        <span class="aip-number">3</span>
+        AIP Versioning
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/8">
+        <span class="aip-number">8</span>
+        AIP Style and Guidance
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/9">
+        <span class="aip-number">9</span>
+        Glossary
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/100">
+        <span class="aip-number">100</span>
+        API Design Review FAQ
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/111">
+        <span class="aip-number">111</span>
+        Planes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/121">
+        <span class="aip-number">121</span>
+        Resource-oriented design
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/122">
+        <span class="aip-number">122</span>
+        Resource names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/123">
+        <span class="aip-number">123</span>
+        Resource types
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/124">
+        <span class="aip-number">124</span>
+        Resource association
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/126">
+        <span class="aip-number">126</span>
+        Enumerations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/127">
+        <span class="aip-number">127</span>
+        HTTP and gRPC Transcoding
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/128">
+        <span class="aip-number">128</span>
+        Declarative-friendly interfaces
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/129">
+        <span class="aip-number">129</span>
+        Server-Modified Values and Defaults
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/130">
+        <span class="aip-number">130</span>
+        Methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/131">
+        <span class="aip-number">131</span>
+        Standard methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/132">
+        <span class="aip-number">132</span>
+        Standard methods: List
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/133">
+        <span class="aip-number">133</span>
+        Standard methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/134">
+        <span class="aip-number">134</span>
+        Standard methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/135">
+        <span class="aip-number">135</span>
+        Standard methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/136">
+        <span class="aip-number">136</span>
+        Custom methods
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/140">
+        <span class="aip-number">140</span>
+        Field names
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/141">
+        <span class="aip-number">141</span>
+        Quantities
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/142">
+        <span class="aip-number">142</span>
+        Time and duration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/143">
+        <span class="aip-number">143</span>
+        Standardized codes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/144">
+        <span class="aip-number">144</span>
+        Repeated fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/145">
+        <span class="aip-number">145</span>
+        Ranges
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/146">
+        <span class="aip-number">146</span>
+        Generic fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/147">
+        <span class="aip-number">147</span>
+        Sensitive fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/148">
+        <span class="aip-number">148</span>
+        Standard fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/149">
+        <span class="aip-number">149</span>
+        Unset field values
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/151">
+        <span class="aip-number">151</span>
+        Long-running operations
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/152">
+        <span class="aip-number">152</span>
+        Jobs
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/153">
+        <span class="aip-number">153</span>
+        Import and export
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/154">
+        <span class="aip-number">154</span>
+        Resource freshness validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/155">
+        <span class="aip-number">155</span>
+        Request identification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/156">
+        <span class="aip-number">156</span>
+        Singleton resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/157">
+        <span class="aip-number">157</span>
+        Partial responses
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/158">
+        <span class="aip-number">158</span>
+        Pagination
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/159">
+        <span class="aip-number">159</span>
+        Reading across collections
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/160">
+        <span class="aip-number">160</span>
+        Filtering
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/161">
+        <span class="aip-number">161</span>
+        Field masks
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/162">
+        <span class="aip-number">162</span>
+        Resource Revisions
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/163">
+        <span class="aip-number">163</span>
+        Change validation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/164">
+        <span class="aip-number">164</span>
+        Soft delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/165">
+        <span class="aip-number">165</span>
+        Criteria-based delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/180">
+        <span class="aip-number">180</span>
+        Backwards compatibility
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/181">
+        <span class="aip-number">181</span>
+        Stability levels
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/182">
+        <span class="aip-number">182</span>
+        External software dependencies
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/185">
+        <span class="aip-number">185</span>
+        API Versioning
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/191">
+        <span class="aip-number">191</span>
+        File and directory structure
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/192">
+        <span class="aip-number">192</span>
+        Documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/193">
+        <span class="aip-number">193</span>
+        Errors
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/194">
+        <span class="aip-number">194</span>
+        Automatic retry configuration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/200">
+        <span class="aip-number">200</span>
+        Precedent
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/202">
+        <span class="aip-number">202</span>
+        Fields
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/203">
+        <span class="aip-number">203</span>
+        Field behavior documentation
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/205">
+        <span class="aip-number">205</span>
+        Beta-blocking changes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/210">
+        <span class="aip-number">210</span>
+        Unicode
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/211">
+        <span class="aip-number">211</span>
+        Authorization checks
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/213">
+        <span class="aip-number">213</span>
+        Common components
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/214">
+        <span class="aip-number">214</span>
+        Resource expiration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/215">
+        <span class="aip-number">215</span>
+        API-specific protos
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/216">
+        <span class="aip-number">216</span>
+        States
+      </a>
+    </li>
+    <li class="nav-item nav-item-active">
+      <a href="/217">
+        <span class="aip-number">217</span>
+        Unreachable resources
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/231">
+        <span class="aip-number">231</span>
+        Batch methods: Get
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/233">
+        <span class="aip-number">233</span>
+        Batch methods: Create
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/234">
+        <span class="aip-number">234</span>
+        Batch methods: Update
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/235">
+        <span class="aip-number">235</span>
+        Batch methods: Delete
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/236">
+        <span class="aip-number">236</span>
+        Policy preview
+      </a>
+    </li>
+    </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aip-sidebar" class="docs-component-sidebar">
+  <table id="aip-summary">
+    <tr><th colspan="2">Unreachable resources</th></tr>
+    <tr><td>Number</td><td>217</td></tr>
+    <tr><td>Permalink</td><td><a href="https://google.aip.dev/217">google.aip.dev/217</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2019-08-26</td></tr>
+    <tr><td>Updated</td><td>2019-08-26</td></tr>
+  </table>
+
+  <section id="aip-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#pagination">Pagination</a></li>
+<li><a href="#adopting-partial-success">Adopting partial success</a></li>
+</ul>
+</li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#using-service-relative-resource-names">Using service-relative resource names</a></li>
+<li><a href="#minimizing-extra-error-details-in-response">Minimizing extra error details in response</a></li>
+<li><a href="#unordered-unreachable-contents">Unordered unreachable contents</a></li>
+<li><a href="#per-page-unreachable-resources">Per page unreachable resources</a></li>
+<li><a href="#using-request-field-to-opt-in">Using request field to opt-in</a></li>
+<li><a href="#introducing-fields-simultaneously">Introducing fields simultaneously</a></li>
+<li><a href="#partial-success-granularity-limitations">Partial success granularity limitations</a></li>
+</ul>
+</li>
+<li><a href="#history">History</a><ul>
+<li><a href="#pagination-guidance">Pagination guidance</a></li>
+</ul>
+</li>
+<li><a href="#further-reading">Further reading</a></li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/issues/">File Bug</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/blob/master/aip/general/0217.md">View source</a></li>
+      <li><a href="https://github.com/aip-dev/google.aip.dev/edit/master/aip/general/0217.md">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aip-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aip-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Improvement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AIPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Unreachable resources
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aip-number">AIP-217</h4>
+  <h1 id="unreachable-resources">Unreachable resources</h1>
+<p>Occasionally, a user may ask for a list of resources, and some set of resources
+in the list are temporarily unavailable. The most typical use case is while
+supporting <a href="/159">Reading Across Collections</a>. For example, a user may ask to
+list resources across multiple parent locations, but one of those locations is
+temporarily unreachable. In this situation, it is still desirable to provide
+the user with all the available resources, while indicating that something is
+missing.</p>
+<h2 id="guidance">Guidance</h2>
+<p>If a method to retrieve data is capable of partially failing due to one or more
+resources being temporarily unreachable, the response message <strong>must</strong> include
+a field to indicate this:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ListBooksResponse</span> <span class="p">{</span>
+  <span class="c1">// The books matching the request.</span>
+  <span class="k">repeated</span> <span class="n">Book</span> <span class="na">books</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">// The next page token, if there are more books matching the</span>
+  <span class="c1">// request.</span>
+  <span class="kt">string</span> <span class="na">next_page_token</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="c1">// Unreachable resources.</span>
+  <span class="k">repeated</span> <span class="kt">string</span> <span class="na">unreachable</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">UNORDERED_LIST</span>
+  <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>The field <strong>must</strong> be a repeated string, and <strong>should</strong> be named
+  <code>unreachable</code>.</li>
+<li>The field <strong>must</strong> contain the resource names of the resources that are
+  unreachable or those that impede reaching the requested collection, such as
+  the parent resource of the collection that could not be reached.<ul>
+<li>For example, if an entire location is unreachable, preventing access to the
+  localized collection of resources requested, the location resource is
+  included.</li>
+</ul>
+</li>
+<li>The field <strong>must</strong> contain <em>service-relative</em> resource names, and <strong>must not</strong>
+  contain full resource names, resource URIs, or simple resource IDs. See
+  <a href="/122">AIP-122</a> for definitions.<ul>
+<li>For example, if a <code>Book</code> resource is unreachable, the <em>service-relative</em>
+  resource name <code>"shelves/scifi1/books/starwars4"</code> is included in
+  <code>unreachable</code>, as opposed to the <em>full</em> resource name
+  <code>"//library.googleapis.com/shelves/scifi1/books/starwars4"</code>, the
+  <em>parent-relative</em> resource <code>"books/starwars4"</code>, the resource ID
+  <code>"starwars4"</code>, or the resource URI.</li>
+</ul>
+</li>
+<li>The response <strong>must not</strong> provide any other information about the issue(s)
+  that made the listed resources unreachable.<ul>
+<li>For example, the response cannot contain an extra field with error reasons
+  for each <code>unreachable</code> entry.</li>
+</ul>
+</li>
+<li>The service <strong>must</strong> provide a way for the user to make a more specific
+  request and receive an error with additional information e.g. via a Standard
+  Get or a Standard List targeted at the unreachable collection parent.<ul>
+<li>The service <strong>must</strong> also allow the user to repeat the original call with
+  more restrictive parameters.</li>
+</ul>
+</li>
+<li>The resource names that appear in <code>unreachable</code> <strong>may</strong> be heterogeneous.<ul>
+<li>The <code>unreachable</code> field definition <strong>should</strong> document what potential
+  resources could be provided in this field, and note that it might expand
+  later.</li>
+<li>For example, if both an entire location and a specific resource in a
+  different location are unreachable, the unreachable location's name 
+  e.g. <code>"projects/example123/locations/us-east1"</code> and the unreachable
+  resource's name e.g.
+  <code>"projects/example123/locations/europe-west2/instances/example456"</code> will
+  both appear in <code>unreachable</code>.</li>
+</ul>
+</li>
+<li>The <code>unreachable</code> field <strong>must not</strong> have semantically meaningful ordering or
+  structure within the list. Put differently, <code>unreachable</code> <strong>must</strong> be an
+  unordered list.<ul>
+<li>As such, the <code>unreachable</code> field <strong>must</strong> be annotated with <code>UNORDERED_LIST</code>
+  field behavior (see <a href="/203#unordered-list">AIP-203</a>).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Important:</strong> If a single unreachable location or resource prevents returning
+any data by definition (for example, a list request for a single publisher
+where that publisher is unreachable), the service <strong>must</strong> fail the entire
+request with an error.</p>
+<h3 id="pagination">Pagination</h3>
+<p>While preparing a page of results to fulfill a page fetch RPC e.g. an
+<a href="/132">AIP-132</a> Standard List call, if the service encounters any unreachable
+resources or collections they <strong>must</strong> do the following:</p>
+<ul>
+<li>Include the resource name for the unreachable resource in the <code>unreachable</code>
+  response field.<ul>
+<li>The resource name <strong>must</strong> be the most appropriately scoped for the
+  unreachable resource or collection.<ul>
+<li>For example, if a specific zone within a region is unreachable, the
+  unreachable resource name would be a zonal Location e.g.
+  <code>projects/example/locations/us-west1-a</code>, but if an entire region is
+  unreachable, the resource name would be a regional Location e.g.
+  <code>projects/example/locations/us-west1</code>.</li>
+</ul>
+</li>
+<li>The resource name <strong>must</strong> be included, regardless of restrictive paging
+  parameters e.g. <code>order_by</code>, when it is identified as unreachable.</li>
+</ul>
+</li>
+<li>Populate results that were previously considered unreachable on a following
+  page if their availability is restored and the paging parameters allow for
+  their inclusion.<ul>
+<li>Determining inclusion eligibility based on paging parameters also includes
+  any documented default ordering behavior in the absence of user-specified
+  ordering in the request.</li>
+<li>For example, if region <code>projects/example/locations/us-west1</code> was unavailable
+  in the first page of an ordered paging call, and including its resources
+  would violate the ordering, those out-of-order resources are not included in
+  the following page.</li>
+<li>Similarly, if the same exact request is made, and resources previously
+  considered unreachable are available again, they <strong>must</strong> be populated,
+  within the constraints of the paging parameters.</li>
+</ul>
+</li>
+<li>Limit the number of unreachable resource names returned in a given response
+  if, even after up-scoping the unreachable resource name, the number of
+  unreachable resource names exceeds a documented maximum.<ul>
+<li>This maximum <strong>must</strong> be documented in the <code>unreachable</code> field comments
+  directly.</li>
+<li>This is independent of the <code>page_size</code> set by the caller.</li>
+</ul>
+</li>
+</ul>
+<h4 id="retaining-previous-behavior">Retaining previous behavior</h4>
+<p>Services <strong>may</strong> continue with previously implemented <code>unreachable</code> pagination
+behavior where changing it would induce an incompatible change as per
+<a href="/180">AIP-180</a>, but <strong>must</strong> document said behavior on the <code>unreachable</code>
+field(s) directly.</p>
+<h3 id="adopting-partial-success">Adopting partial success</h3>
+<p>In order for an existing API that has a default behavior <em>differing</em> from the
+aforementioned guidance i.e. the API call returns an error status instead of a
+partial result, to adopt the <code>unreachable</code> pattern the API <strong>must</strong> do the
+following:</p>
+<ul>
+<li>The default behavior <strong>must</strong> be retained to avoid incompatible behavioral
+  changes<ul>
+<li>For example, if the default behavior is to return an error if any location
+  is unreachable, that default behavior <strong>must</strong> be retained.</li>
+</ul>
+</li>
+<li>The request message <strong>must</strong> have a <code>bool return_partial_success</code> field</li>
+<li>The response message <strong>must</strong> have the standard
+  <code>repeated string unreachable</code> field</li>
+<li>The two aforementioned fields <strong>must</strong> be added simultaneously</li>
+</ul>
+<p>When the <code>bool return_partial_success</code> field is set to <code>true</code> in a request, the
+API <strong>must</strong> behave as described in the aforementioned guidance with regards to
+populating the <code>repeated string unreachable</code> response field.</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span> <span class="nc">ListBooksRequest</span> <span class="p">{</span>
+  <span class="c1">// Standard List request fields...</span>
+
+  <span class="c1">// Setting this field to `true` will opt the request into returning the</span>
+  <span class="c1">// resources that are reachable, and into including the names of those that</span>
+  <span class="c1">// were unreachable in the [ListBooksResponse.unreachable] field. This can</span>
+  <span class="c1">// only be `true` when reading across collections e.g. when `parent` is set to</span>
+  <span class="c1">//  `&quot;projects/example/locations/-&quot;`.</span>
+  <span class="kt">bool</span> <span class="na">return_partial_success</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">ListBooksResponse</span> <span class="p">{</span>
+  <span class="c1">// Standard List Response fields...</span>
+
+  <span class="c1">// Unreachable resources. Populated when the request opts into</span>
+  <span class="c1">// `return_partial_success` and reading across collections e.g. when</span>
+  <span class="c1">// attempting to list all resources across all supported locations.</span>
+  <span class="k">repeated</span> <span class="kt">string</span> <span class="na">unreachable</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span> <span class="o">=</span> <span class="n">UNORDERED_LIST</span>
+  <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="partial-success-granularity">Partial success granularity</h4>
+<p>If the <code>bool return_partial_success</code> field is set to <code>true</code> in a request that is
+scoped beyond the supported granualirty of the API's ability to reasonably
+report unreachable resources, the API <strong>should</strong> return an <code>INVALID_ARGUMENT</code>
+error with details explaining the issue. For example, if the API only supports
+<code>return_partial_success</code> when [Reading Across Collections][aip159], it returns
+an <code>INVALID_ARGUMENT</code> error when given a request scoped to a specific parent
+resource collection. The supported granularity <strong>must</strong> be documented on the
+<code>return_partial_success</code> field.</p>
+<h2 id="rationale">Rationale</h2>
+<h3 id="using-service-relative-resource-names">Using service-relative resource names</h3>
+<p>In general, relative resource names, as defined in <a href="/122">AIP-122</a>, are the best
+practice for referring to resources by name <em>within</em> a service and in other
+services when that other service is obvious. The full resource name format is
+strictly less consumable (e.g., requires extra parsing client side), and
+over-specified for the uses of <code>unreachable</code>. Resource URIs are not transport
+agnostic, as they are unusable in standard methods for gRPC users, and simple
+resource IDs do not provide enough information about exactly which resource
+was unreachable in a heterogenous list of resources.</p>
+<h3 id="minimizing-extra-error-details-in-response">Minimizing extra error details in response</h3>
+<p>The context in which an unreachable resource is discovered may be sensitive and
+the state of the system fluid between calls. As such, it is preferred to defer
+to the service by making a more specific RPC to get more details about a
+specific resource or parent. This allows the parent to handle all necessary RPC
+checks and system state resolution on at time of request, rather than by
+shoehorning potentially privileged or stale information into the broader list
+call it was unreachable for.</p>
+<h3 id="unordered-unreachable-contents">Unordered <code>unreachable</code> contents</h3>
+<p>It is important for broad API consistency that the contents of <code>unreachable</code> not
+have a specific or order semantic structure. If each API baked a specific
+ordering into a standard field, no single implementation, client or server side,
+would be correct.</p>
+<h3 id="per-page-unreachable-resources">Per page <code>unreachable</code> resources</h3>
+<p>Populating <code>unreachable</code> resources on a per page basis allows end users to
+identify immediately when a page is incomplete, rather than <em>after</em> paging
+through all results. Paging to completion is not guaranteed, so it is important
+to communicate as soon as possible when there are unreachable resource missing
+from a given page. Furthermore, it allows users to identify when there is a
+potential issue that they need to account for in subsequent calls. Finally,
+retaining unreachable resources until the end of paging results requires
+services to retain the state for what should be indepedent and fully isolated
+API calls.</p>
+<h3 id="using-request-field-to-opt-in">Using request field to opt-in</h3>
+<p>Introducing a new request field as means of opting into the partial success
+behavior is the best way to communicate user intent while keeping the 
+default behavior backwards compatible. The alternative, changing the default
+behavior with the introduction of the <code>unreachable</code> response field, presents
+a backwards incompatible change. Users that previously expected failure when any
+resource was unreachable, assume the successful response means all resources
+are accounted for in the response.</p>
+<h3 id="introducing-fields-simultaneously">Introducing fields simultaneously</h3>
+<p>Introducing the request and response fields simultaneously is to prevent an
+invalid intermediate state that is presented by only adding one or the other. If
+only <code>unreachable</code> is added, then it could be assumed that it being empty means
+all resources were returned when that may not be true. If only
+<code>return_partial_success</code> is added, then the user wouldn't have a means of
+knowing which resources were unreachable.</p>
+<h3 id="partial-success-granularity-limitations">Partial success granularity limitations</h3>
+<p>At a certain level of request scope granularity, an API is simply unable to
+enumerate the resources that are unreachable. For example, global-only APIs may
+be unable to provide granularity at a localized collection level. In such a
+case, preemptively returning an error when <code>return_partial_success=true</code>
+protects the user from the risks of the alternative - expecting unreachable
+resources if there was an issue, but not getting any, thus falsely assuming
+everything was retrieved. This aligns with guidance herein that suggests failing
+requests that cannot be fulfilled preemptively.</p>
+<h2 id="history">History</h2>
+<h3 id="pagination-guidance">Pagination guidance</h3>
+<p>The original guidance for how to populate the <code>unreachable</code> field revolved
+around consuming the contents as if they were the paged results. This meant that
+paged resources and unreachable resources couldn't be returned in the same
+response i.e. page, and users needed to completely page through all results
+in order to see if any were unreachable. See the Rationale section for the
+reasoning around the changes.</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>For listing across collections, see <a href="/159">AIP-159</a>.</li>
+</ul>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li><strong>2024-07-29</strong>: Reformat guidance, add explicit resource name format</li>
+<li><strong>2024-07-26</strong>: Change pagination guidance.
+  requirement.</li>
+<li><strong>2024-07-19</strong>: Add guidance for brownfield adoption of partial success.</li>
+</ul>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>
